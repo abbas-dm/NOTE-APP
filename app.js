@@ -1,4 +1,11 @@
 show();
+
+let clearbtn = document.getElementById("clearBtn");
+clearbtn.addEventListener("click", function(e){
+	let txt=document.getElementById("addTxt");
+	txt.value = "";
+})
+
 let addbtn = document.getElementById("addBtn");
 addbtn.addEventListener("click", function(e){
 	let txt=document.getElementById("addTxt");
@@ -9,11 +16,13 @@ addbtn.addEventListener("click", function(e){
 	else{
 		notesObj=JSON.parse(notes);
 	}
+
 	notesObj.push(txt.value);
 	localStorage.setItem("notes",JSON.stringify(notesObj));
 	txt.value="";
 	show();         
 });
+
 function show(){
 	let notes=localStorage.getItem("notes");
 	if(notes==null){
@@ -22,6 +31,7 @@ function show(){
 	else{
 		notesObj=JSON.parse(notes);
 	}
+
 	let html ="";
 	notesObj.forEach(function(element,index){
 		html += `
@@ -34,6 +44,7 @@ function show(){
             </div>
         </div>`;
 	});
+
 	let notesElm=document.getElementById("notes");
 	if(notesObj.length !=0){
 		notesElm.innerHTML=html;
@@ -51,6 +62,7 @@ function deleteEle(index){
 	else{
 		notesObj=JSON.parse(notes);
 	}
+
 	notesObj.splice(index,1);
 	localStorage.setItem("notes",JSON.stringify(notesObj));
 	show();
