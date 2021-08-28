@@ -32,7 +32,7 @@ addbtn.addEventListener("click", function(e){
 function show(){
 	let notes = localStorage.getItem("notes");
 	if(notes == null){
-		notesobj = [];
+		notesObj = [];
 	}
 	else{
 		notesObj = JSON.parse(notes);
@@ -63,7 +63,7 @@ function show(){
 function deleteEle(index){
 	let notes = localStorage.getItem("notes");
 	if(notes == null){
-		notesobj = [];
+		notesObj = [];
 	}
 	else{
 		notesObj = JSON.parse(notes);
